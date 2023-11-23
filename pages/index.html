@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire et Affichage des Données</title>
+</head>
+<body>
+
+    <h1>Sélectionnez un élément et une plage horaire</h1>
+
+    <form id="sensorForm">
+        <label for="element">Choisissez un Capteur :</label>
+        <select id="sensor-id" name="sensor_id">
+            <option value="619048">619048</option>
+            <option value="6219043">6219043</option>
+            <option value="6218223">6218223</option>
+            <!-- Ajoutez autant d'options que nécessaire -->
+        </select>
+
+        <br><br>
+
+        <label for="start_date">Date de début :</label>
+        <input type="datetime-local" id="start_date" name="start_date" required>
+
+        <br><br>
+
+        <label for="end_date">Date de fin :</label>
+        <input type="datetime-local" id="end_date" name="end_date" required>
+
+        <br><br>
+
+        <input type="submit" value="Afficher les données">
+    </form>
+
+    <h2>Données du Capteur</h2>
+
+    <ul id="sensorList"></ul>
+
+    <script>
+        // Fonction pour obtenir et afficher les données du serveur
+        function getSensorData(sensorId, startDate, endDate) {
+            // Formater les dates au format compatible avec le serveur
+            const formattedStartDate = new Date(startDate).toISOString();
+            const formattedEndDate = new Date(endDate).toISOString();
+
+            // URL du serveur avec les paramètres de la requête GET
+            const serverUrl = `http://127.0.0.1:8000/?sensor_id=${encodeURIComponent(sensorId)}&start_date=${encodeURIComponent(formattedStartDate)}&end_date=${encodeURIComponent(formattedEndDate)}`;
+
+            // Effacer les anciennes données
+            document.getElementById('sensorList').innerHTML = '';
+
+            // Effectuer une requête fetch pour obtenir les données du serveur
+            fetch(serverUrl)
+                .then(response => response.json()) // Convertir la réponse en JSON
+                .then(data => {
+                    // Manipuler les données une à une
+                    data.forEach(sensor => {
+                        // Créer un élément li pour afficher chaque propriété
+                        const sensorListItem = document.createElement('li');
+                        sensorListItem.innerHTML = `
+                            ID Capteur: ${sensor['id_capteur']}<br>
+                            Température: ${sensor.temperature}<br>
+                            Humidité: ${sensor.humidity}<br>
+                            Batterie: ${sensor.battery}<br>
+                            Signal RSSI: ${sensor['signal_rssi']}<br>
+                            Date: ${sensor.date}<br>
+                            -------------------
+                        `;
+
+                        // Ajouter l'élément li à la liste des capteurs
+                        document.getElementById('sensorList').appendChild(sensorListItem);
+                    });
+                })
+                .catch(error => console.error('Erreur de récupération des données:', error));
+        }
+
+        // Écouter l'événement de soumission du formulaire
+        document.getElementById('sensorForm').addEventListener('submit', function (event) {
+            // Empêcher le formulaire de se soumettre normalement
+            event.preventDefault();
+
+            // Obtenir la valeur sélectionnée dans la liste déroulante
+            const selectedElement = document.getElementById('sensor-id').value;
+
+            // Obtenir la valeur sélectionnée dans les champs de date
+            const startDate = document.getElementById('start_date').value;
+            const endDate = document.getElementById('end_date').value;
+
+            // Appeler la fonction pour obtenir et afficher les données du serveur
+            getSensorData(selectedElement, startDate, endDate);
+        });
+    </script>
+
+</body>
+</html>
