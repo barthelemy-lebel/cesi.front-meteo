@@ -57,3 +57,42 @@ nav .actions i {
     border-radius: 5px;
     padding: 10px;
 }
+
+/* Style de base pour le tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Style des cellules et des en-têtes de colonnes */
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Couleur de fond pour les en-têtes de colonnes */
+th {
+    background-color: #f2f2f2;
+}
+
+/* Style des lignes impaires du tableau */
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Style des boutons du formulaire */
+input[type="submit"] {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: var(--main-bg-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--main-bg-color);
+}
