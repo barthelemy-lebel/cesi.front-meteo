@@ -3,34 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <title>Formulaire et Affichage des Données</title>
 </head>
 <body>
-
-    <h1>Sélectionnez un élément et une plage horaire</h1>
+    <nav>
+        <div class="links">
+            <a href="index.html">Accueil</a>
+            <a href="/pages/historique">Historique</a>
+        </div>
+        <div class="actions">
+            <i class="bi bi-gear-fill"></i>
+        </div>
+        
+    </nav>
 
     <form id="sensorForm">
-        <label for="element">Choisissez un Capteur :</label>
-        <select id="sensor-id" name="sensor_id">
-            <option value="619048">619048</option>
-            <option value="6219043">6219043</option>
-            <option value="6218223">6218223</option>
-            <!-- Ajoutez autant d'options que nécessaire -->
-        </select>
-
-        <br><br>
-
-        <label for="start_date">Date de début :</label>
-        <input type="datetime-local" id="start_date" name="start_date" required>
-
-        <br><br>
-
-        <label for="end_date">Date de fin :</label>
-        <input type="datetime-local" id="end_date" name="end_date" required>
-
-        <br><br>
-
-        <input type="submit" value="Afficher les données">
+        <div class="params-form">
+            <select id="sensor-id" name="sensor_id">
+                <option value="619048">619048</option>
+                <option value="6219043">6219043</option>
+                <option value="6218223">6218223</option>
+            </select>
+        </div>
+        
+        <div class="params-form">
+            <input type="datetime-local" id="start_date" name="start_date" required>
+        </div>
+        
+        <div class="params-form">
+            <input type="datetime-local" id="end_date" name="end_date" required>
+        </div>
+        
+        <input type="submit" value="Valider">
+        
+        <input type="submit" value="Recharger">
     </form>
 
     <h2>Données du Capteur</h2>
@@ -59,11 +67,9 @@
                         // Créer un élément li pour afficher chaque propriété
                         const sensorListItem = document.createElement('li');
                         sensorListItem.innerHTML = `
-                            ID Capteur: ${sensor['id_capteur']}<br>
+                            ID Capteur: ${sensorId}<br>
                             Température: ${sensor.temperature}<br>
                             Humidité: ${sensor.humidity}<br>
-                            Batterie: ${sensor.battery}<br>
-                            Signal RSSI: ${sensor['signal_rssi']}<br>
                             Date: ${sensor.date}<br>
                             -------------------
                         `;
