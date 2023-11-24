@@ -20,25 +20,25 @@
     </nav>
 
     <form id="sensorForm">
-        <div class="params-form">
-            <select id="sensor-id" name="sensor_id">
+        <div class="params-form custom-select">
+            <select id="sensor-id" name="sensor_id" value="" placeholder="Selectionner un capteur">
                 <option value="619048">619048</option>
                 <option value="6219043">6219043</option>
                 <option value="6218223">6218223</option>
-            </select>
+            </select>            
         </div>
         
-        <div class="params-form">
+        <div class="params-form custom-select date-select">
             <input type="datetime-local" id="start_date" name="start_date" required>
         </div>
         
-        <div class="params-form">
+        <div class="params-form custom-select date-select">
             <input type="datetime-local" id="end_date" name="end_date" required>
         </div>
         
-        <input type="submit" value="Valider">
+        <input type="submit" value="Valider" class="custom-button">
         
-        <input type="submit" value="Recharger">
+        <input type="submit" value="Recharger" class="custom-button">
     </form>
 
     <h2>Données du Capteur</h2>
@@ -65,13 +65,12 @@
                     // Manipuler les données une à une
                     data.forEach(sensor => {
                         // Créer un élément li pour afficher chaque propriété
-                        const sensorListItem = document.createElement('li');
+                        const sensorListItem = document.createElement('tr');
                         sensorListItem.innerHTML = `
                             ID Capteur: ${sensorId}<br>
                             Température: ${sensor.temperature}<br>
                             Humidité: ${sensor.humidity}<br>
                             Date: ${sensor.date}<br>
-                            -------------------
                         `;
 
                         // Ajouter l'élément li à la liste des capteurs
