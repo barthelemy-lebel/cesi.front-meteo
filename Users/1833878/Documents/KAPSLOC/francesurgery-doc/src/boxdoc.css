@@ -1,0 +1,59 @@
+.box-doc-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.box-doc {
+  position: relative;
+  border: 1px solid #ccc;
+  padding: 20px;
+  padding-top: 30px;
+  text-align: left;
+  margin: auto;
+}
+
+h2 {
+  display: inline-block;
+  position: absolute;
+  top: -40px;
+  left: 15px;   
+  background-color: white;
+  padding: 0 10px;
+}
+
+.alert {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    background-color: rgba(21, 156, 21, 0.614);
+    border-radius: 10px;
+    padding: left 5px; ;
+    padding: right 5px;
+    
+    
+  }
+
+.icon {
+    padding-left: 9px;
+    margin-right: 10px;
+}
+
+.recommendation {
+    margin-top: 10px;
+    margin: 0px;
+}
+
+.recommendation-title {
+    font-weight: bold;
+    margin-bottom: 2px;
+    
+}
+
+.orange-link {
+    color: rgb(255, 128, 0);
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
