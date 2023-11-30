@@ -1,6 +1,165 @@
 * {
-  margin: 0;
-  padding: 0;
+
+    margin: 0;
+    padding: 0;
+
+    /*Couleurs principale*/
+    --main-bg-color: #13538a;
+    --main-border-color: #040404;
+
+}
+
+nav {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--main-bg-color);
+    justify-content: space-between;
+}
+
+nav .links {
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
+}
+
+nav .links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    padding: 10px;
+    margin-right: 50%;
+}
+
+nav .actions {
+    margin-right: 5%;
+    color: white;
+}
+
+nav .actions i {
+    font-size: 1.5em;
+    padding: 10px;
+}
+
+#sensorForm {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin-left: 5%;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+#sensorForm .params-form {
+    display: flex;
+    flex-direction: row;
+    border: solid 2px var(--main-border-color);
+    border-radius: 20px;
+    padding: 10px;
+    width: 200px;
+    justify-content: center;
+}
+
+.custom-select {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-select select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+    padding: 0px 30px 0px 10px;
+    border: none;
+    border-radius: 50px;
+    width: 100%;
+    font-size: 1em;
+    text-align: center;
+}
+
+.custom-select::before {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #555;
+    pointer-events: none;
+}
+
+.custom-select::before {
+    cursor: pointer;
+    content: '\25BC'; /* Code unicode pour la flèche vers le bas */
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Ajustez la position de la flèche à droite selon vos besoins */
+    transform: translateY(-50%);
+    font-size: 18px; /* Ajustez la taille de la flèche selon vos besoins */
+    color: var(--main-bg-color);
+}
+
+.custom-select.date-select {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-select.date-select input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+    padding: 0px 30px 0px 10px;
+    border: none;
+    border-radius: 50px;
+    width: 100%;
+    font-size: 1em;
+    text-align: center;
+}
+
+.custom-select.date-select::before {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #555;
+    pointer-events: none;
+}
+
+.custom-select.date-select::before {
+    cursor: pointer;
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--main-bg-color);
+}
+
+.custom-button {
+    display: inline-block;
+    width: 220px;
+    padding: 5px 50px;
+    font-size: 1em;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background-color: var(--main-bg-color);
+    color: #fff;
+    transition: background-color 0.3s ease;
+    border: solid 2px var(--main-border-color);
+    font-size: 1.2em;
+}
+
+.custom-button:hover {
+    background-color: #217dbb;
+
 }
 
 .open_button{
