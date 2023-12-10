@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/home.css">
+  <link rel="stylesheet" href="/styles/historique.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+  <script src="/script/historique.js"></script>
+    
+  <title>Historique</title>
+</head>
+<body>
+  <div class="header">
+    <div class="menu-container">
+      <div class="burger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="historique.html">Historique</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p id="date-actuelle"></p>
+    <i class="bi bi-gear-fill"></i>
+  </div>
+
+  <form id="sensorForm">
+    <div class="params-form custom-select">
+      <input type="datetime-local" id="start_date" name="start_date">
+    </div>
+
+    <div class="params-form custom-select">
+      <input type="datetime-local" id="end_date" name="end_date">
+    </div>
+
+    <div class="params-form custom-select">
+      <select id="sensor-id" name="sensor_id">
+        <option value="619048">0619048</option>
+        <option value="6190412">6190412</option>
+        <option value="6218223">6218223</option>
+      </select>
+    </div>
+
+    <div class="params-form">
+      <input type="submit" value="Valider" class="custom-button">
+    </div>
+  </form>
+
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>Index</th>
+        <th>ID Capteur</th>
+        <th>Temperature (°C)</th>
+        <th>Humidity (%)</th>
+        <th>Battery</th>
+        <th>Signal RSSI</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+</body>
+</html>

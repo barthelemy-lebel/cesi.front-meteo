@@ -1,0 +1,38 @@
+.main {
+  width: 94%;
+  margin-left: 2%;
+  margin-right: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.main ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.main .data li {
+  font-weight: 300;
+  width: 100%;
+  font-size: 1.5em;
+}
+
+.main .data span {
+  font-weight: bold;
+}
+
+.charts {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+
+.chart {
+    margin-top: 10px;
+    width: 100%;
+    border: solid 2px var(--main-border-color);
+    border-radius: 15px;
+}
