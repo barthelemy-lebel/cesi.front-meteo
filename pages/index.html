@@ -16,6 +16,7 @@
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin=""></script>
     <script type="module" src="/script/main.js"></script>
+    <script src="/script/update-name.js"></script>
     
     <title>Station Météo - CUBES1</title>
 </head>
@@ -23,8 +24,36 @@
     <div id="popup-container" class="popup-container">
         <div class="popup-content">
             <span class="close-popup" onclick="closePopup()">&times;</span>
-            <form>
-                <input class="custom-input-text" type="text" placeholder="Renommer votre capteur">
+            <div class="add-sensor">
+                Ajouter un capteur :
+                <input class="custom-input-text" type="text" placeholder="Nommer votre capteur">
+                <div class="custom-select-sensor type">
+                    Séléctionner un type de capteur :
+                    <select id="sensor-type" name="sensor_type">
+                        <option value="1">Humidité</option>
+                        <option value="2">Température</option>
+                        <option value="3">Humidité et Température</option>
+                    </select>
+                </div>
+                <button class="popup-custom-button" type="submit">Ajouter</button>
+            </div>
+            <form action="" id="renameForm">
+                <div class="rename-sensor">
+                    Renommer votre capteur :
+                    <div class="custom-select-sensor">
+                        Séléctionner un capteur :
+                        <select id="sensor-id" name="sensor_id">
+                            <option value="619048">0619048</option>
+                            <option value="619041">619041</option>
+                            <option value="6218223">6218223</option>
+                        </select>
+                    </div>
+                    <input class="custom-input-text" id="new-sensor-name" type="text" placeholder="Renommer votre capteur">
+                    <button class="popup-custom-button" type="submit">Renommer</button>
+                </div>
+            </form>
+            <div class="sensor-alert">
+                Alertes :<br>
                 <input class="custom-input-text" type="text" placeholder="Nommer votre alerte">
                 <input class="custom-input-text" type="email" placeholder="Entrer votre e-mail">
                 <div class="custom-select-number">
@@ -57,7 +86,7 @@
                     </select>
                 </div>
                 <button class="popup-custom-button" type="submit">Enregistrer</button>
-            </form>
+            </div>
         </div>
     </div>
 
@@ -136,6 +165,37 @@
 
         function openPopup() {
             document.getElementById("popup-container").style.display = "block";
+            document.getElementById('renameForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Collectez les données du formulaire
+                const sensorId = document.getElementById('sensor-id').value;
+                const newSensorName = document.getElementById('new-sensor-name').value;
+
+                // Effectuez la requête PUT avec Fetch
+                fetch(`http://127.0.0.1:8000/sensor/${sensorId}/update-name`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        new_name: newSensorName, // Utilisez le nouveau nom du paramètre
+                    }),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('La requête a échoué.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // La requête a réussi, traitez la réponse si nécessaire
+                    console.log('Réponse du serveur :', data);
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la requête :', error);
+                });
+            });
         }
 
         // Fonction pour masquer la popup

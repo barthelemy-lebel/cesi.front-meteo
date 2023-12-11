@@ -7,7 +7,6 @@ export async function fetchData(sensorId, startDate, endDate) {
       const serverUrl = `http://127.0.0.1:8000/?sensor_id=${encodeURIComponent(sensorId)}&start_date=${encodeURIComponent(startDate)}&end_date=${encodeURIComponent(endDate)}`
 
       const response = await fetch(serverUrl)
-      console.log(serverUrl)
 
       if (!response.ok) {
           throw new Error(`Erreur de récupération des données : ${response.status}`)
@@ -30,7 +29,10 @@ export async function fetchData(sensorId, startDate, endDate) {
 
           const lastTemperature = `${lastData.temperature}°C`
           const lastHumidity = `${lastData.humidity}%`
-          const sensorName = `Capteur ${lastData['id capteur']}`
+          let sensorName = lastData.sensor_name
+          if (sensorName == undefined) {
+            sensorName = `Capteur ${lastData.sensor_id}`
+          }
 
           document.getElementById("main-sensor-name").innerText = sensorName
           document.getElementById("main-sensor-temp").innerText = lastTemperature
