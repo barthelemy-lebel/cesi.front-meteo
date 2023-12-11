@@ -7,8 +7,14 @@
     <link rel="stylesheet" href="/styles/home.css">
     <link rel="stylesheet" href="/styles/styles.css"> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
     <script type="module" src="/script/main.js"></script>
     
     <title>Station Météo - CUBES1</title>
@@ -111,9 +117,23 @@
             <div class="chart">
                 <canvas id="humidityChart"></canvas>
             </div> 
-        </div> 
+        </div>
+        <div id="map"></div>
     </div>
+    
     <script>
+        var map = L.map('map').setView([44.86514730748969, -0.5771426123011913], 103);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        var marker1 = L.marker([44.86504393555724, -0.5771865586719738]).addTo(map);
+        var marker2 = L.marker([44.864957694780315, -0.5769778134106573]).addTo(map);
+        var marker3 = L.marker([44.865229654509626, -0.5770217597814797]).addTo(map);
+        marker1.bindPopup("Capteur 6218223").openPopup();
+        marker2.bindPopup("Capteur 0619048").openPopup();
+        marker3.bindPopup("Capteur 619041").openPopup();
+
         function openPopup() {
             document.getElementById("popup-container").style.display = "block";
         }
