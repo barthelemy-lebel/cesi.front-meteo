@@ -48,13 +48,12 @@ export function updateTemperatureChart(labels, data) {
           scales: {
               y: {
                   ticks: {
-                      beginAtZero: true
+                      beginAtZero: false
                   }
               }
           }
       }
   });
-  console.log(window.temperatureChart);
 }
 
 export function updateHumidityChart(labels, data) {

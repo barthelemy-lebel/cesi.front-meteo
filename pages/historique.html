@@ -14,6 +14,46 @@
   <title>Historique</title>
 </head>
 <body>
+  <div id="popup-container" class="popup-container">
+    <div class="popup-content">
+        <span class="close-popup" onclick="closePopup()">&times;</span>
+        <form>
+            <input class="custom-input-text" type="text" placeholder="Renommer votre capteur">
+            <input class="custom-input-text" type="text" placeholder="Nommer votre alerte">
+            <input class="custom-input-text" type="email" placeholder="Entrer votre e-mail">
+            <div class="custom-select-number">
+                Température Basse (en °C) :
+                <input type="number" value=15>
+            </div>
+            <div class="custom-select-number">
+                Température Haute (en °C) :
+                <input type="number" value=15>
+            </div>
+            <div class="custom-select-number">
+                Humidité Basse (en %) :
+                <input type="number" value=5>
+            </div>
+            <div class="custom-select-number">
+                Humidité Haute (en %) :
+                <input type="number" value=70>
+            </div>
+            <div class="custom-select-number">
+                Fréquence (en min) :
+                <input type="number" value=30>
+            </div>
+
+            <div class="custom-select-sensor">
+                Séléctionner un capteur :
+                <select id="sensor-id" name="sensor_id">
+                    <option value="619048">0619048</option>
+                    <option value="619041">619041</option>
+                    <option value="6218223">6218223</option>
+                </select>
+            </div>
+            <button class="popup-custom-button" type="submit">Enregistrer</button>
+        </form>
+    </div>
+  </div>
   <div class="header">
     <div class="menu-container">
       <div class="burger-menu">
@@ -42,10 +82,10 @@
     </div>
 
     <div class="params-form custom-select">
-      <select id="sensor-id" name="sensor_id">
-        <option value="619048">0619048</option>
-        <option value="6190412">6190412</option>
+      <select id="form-sensor-id" name="sensor_id">
         <option value="6218223">6218223</option>
+        <option value="0619048">0619048</option>
+        <option value="619041">619041</option>
       </select>
     </div>
 
@@ -68,6 +108,19 @@
     </thead>
     <tbody></tbody>
   </table>
+  <script>
+    function openPopup() {
+        document.getElementById("popup-container").style.display = "block";
+    }
+
+    // Fonction pour masquer la popup
+    function closePopup() {
+        document.getElementById("popup-container").style.display = "none";
+    }
+
+    // Ajoutez cet événement à votre icône "bi-gear-fill"
+    document.querySelector(".bi-gear-fill").addEventListener("click", openPopup);
+  </script>
 
 </body>
 </html>
