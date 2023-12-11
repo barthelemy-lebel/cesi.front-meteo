@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
   async function populateTable() {
     const start_date = document.getElementById('start_date').value;
     const end_date = document.getElementById('end_date').value;
-    const sensor_id = document.getElementById('sensor-id').value;
+    const sensor_id = document.getElementById('form-sensor-id').value;
 
     const data = await fetchData(sensor_id, start_date, end_date);
 

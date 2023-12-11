@@ -10,11 +10,11 @@ var humidityChart = null;
 document.getElementById('sensorForm').addEventListener('submit', function (event) {
   event.preventDefault();
 
-  const selectedElement = document.getElementById('sensor-id').value;
-  const startDate = document.getElementById('start_date').value;
-  const endDate = document.getElementById('end_date').value;
+  let selectedSensor = document.getElementById('form-sensor-id').value;
+  let startDate = document.getElementById('start_date').value;
+  let endDate = document.getElementById('end_date').value;
   
-  fetchData(selectedElement, startDate, endDate);
+  fetchData(selectedSensor, startDate, endDate);
 });
 
 document.addEventListener('DOMContentLoaded', function () {
