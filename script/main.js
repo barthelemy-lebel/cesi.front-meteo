@@ -25,6 +25,4 @@ document.addEventListener('DOMContentLoaded', function () {
     navMenu.classList.toggle('active');
   });
   updateDate();
-  updateTemperatureChart(/* arguments ici */);
-  updateHumidityChart(/* arguments ici */);
 });

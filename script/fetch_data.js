@@ -18,6 +18,16 @@ export async function fetchData(sensorId, startDate, endDate) {
       if (Array.isArray(data) && data.length > 0) {
           const lastData = data[data.length - 1]
 
+          let icon = document.getElementById('meteo-icon');
+
+          if (lastData.temperature > 25 && lastData.humidity < 50) {
+            icon.classList.add("bi", "bi-brightness-high");
+          } else if (lastData.humidity > 50) {
+            icon.classList.add("bi", "bi-cloud-drizzle-fill");
+          } else {
+            icon.classList.add("bi", "bi-cloud-fill");
+          }
+
           const lastTemperature = `${lastData.temperature}°C`
           const lastHumidity = `${lastData.humidity}%`
           const sensorName = `Capteur ${lastData['id capteur']}`
